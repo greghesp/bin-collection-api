@@ -42,7 +42,13 @@ export default async function (req, res) {
 
     return res.send(items);
   } catch (e) {
-    console.error(e);
-    return res.send(500);
+    return res.status(e.response.status).send({
+      errors: [
+        {
+          status: e.response.status,
+          message: e.message,
+        },
+      ],
+    });
   }
 }
