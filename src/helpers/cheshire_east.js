@@ -1,10 +1,11 @@
 import axios from "axios";
 import * as cheerio from "cheerio";
-import cheerioTableparser from "cheerio-tableparser";
 
 export default async function (req, res) {
   try {
-    let items = [];
+    let items = {
+      bins: [],
+    };
 
     if (!req.query.uprn) return res.send(422);
     const response = await axios(
@@ -14,19 +15,34 @@ export default async function (req, res) {
     const $ = cheerio.load(response.data);
 
     $(
-      "div.inner-results-contains-table > div > table > tbody > tr.data-row > tr.visible-cell"
+      "div.inner-results-contains-table > div > table > tbody > tr.data-row > td.visible-cell"
     ).each((index, element) => {
-      // const cells = $(element).find("td.visible-cell").html();
-      console.log(element);
-      //const labels = cells[0].find("label");
-      //nsole.log(cells);
-      //console.log($(element).find("td.visible-cell").html());
-      //console.log($(element).text().trim());
+      const bin = {};
+
+      $(element)
+        .find("label")
+        .toArray()
+        .map((item, index) => {
+          switch (index) {
+            case 0:
+              bin.collectionDay = $(item).text();
+              break;
+            case 1:
+              bin.collectionDate = $(item).text();
+              break;
+            case 2:
+              bin.binType = $(item).text();
+              break;
+            default:
+              return;
+          }
+        });
+      items.bins.push(bin);
     });
-    console.log(items);
-    return res.send(200);
+
+    return res.send(items);
   } catch (e) {
     console.error(e);
-    return true;
+    return res.send(500);
   }
 }
