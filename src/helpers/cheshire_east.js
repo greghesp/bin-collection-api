@@ -1,5 +1,8 @@
 import axios from "axios";
 import * as cheerio from "cheerio";
+import dayjs from "dayjs";
+import customParseFormat from "dayjs/plugin/customParseFormat";
+dayjs.extend(customParseFormat);
 
 export default async function (req, res) {
   try {
@@ -28,7 +31,7 @@ export default async function (req, res) {
               bin.collectionDay = $(item).text();
               break;
             case 1:
-              bin.collectionDate = $(item).text();
+              bin.collectionDate = dayjs($(item).text(), "DD/MM/YYYY");
               break;
             case 2:
               bin.binType = $(item).text();
