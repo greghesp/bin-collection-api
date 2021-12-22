@@ -17,6 +17,9 @@ All requests are `GET` requests to `/api/council/[council]`.  Please see specifi
 ### Cheshire East
 GET `/api/council/cheshire_east?uprn=XXXXXXX`
 
+### Stockport
+GET `/api/council/stockport?uprn=XXXXXXX`
+
 ## Contribution
 - Create a file under `src/helpers` for your chosen council to perform the page parsing logic
 - Add the parse to the imports under `src/helpers/index.js` and export it
