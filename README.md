@@ -18,13 +18,13 @@ For most requests, use your UPRN which can be found here: https://uprn.uk/
 
 
 ### Cheshire East
-GET `/api/council/cheshire_east?uprn=XXXXXXX`
+GET `https://bin-collection-api.vercel.app/api/council/cheshire_east?uprn=XXXXXXX`
 
 ### Stockport
-GET `/api/council/stockport?uprn=XXXXXXX`
+GET `https://bin-collection-api.vercel.app/api/council/stockport?uprn=XXXXXXX`
 
 ### East Cambridgeshire
-GET `/api/council/east_cambridgeshire?uprn=XXXXXXX`
+GET `https://bin-collection-api.vercel.app/api/council/east_cambridgeshire?uprn=XXXXXXX`
 
 
 
