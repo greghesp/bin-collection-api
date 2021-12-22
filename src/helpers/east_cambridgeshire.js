@@ -2,6 +2,7 @@ import axios from "axios";
 import * as cheerio from "cheerio";
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
+import fullDayName from "../utils/fullDayName";
 dayjs.extend(customParseFormat);
 
 export default async function (req, res) {
@@ -27,7 +28,7 @@ export default async function (req, res) {
           if (index === 2) {
             let dayDate = $(item).text().trim();
             dayDate = dayDate.split("-");
-            bin.collectionDay = dayDate[0].trim();
+            bin.collectionDay = fullDayName(dayDate[0].trim());
             bin.collectionDate = dayjs(dayDate[1].trim(), "Dd MMM YYYY");
           }
         });
