@@ -14,11 +14,19 @@ yarn dev
 
 All requests are `GET` requests to `/api/council/[council]`.  Please see specific codebases for exact requests
 
+For most requests, use your UPRN which can be found here: https://uprn.uk/
+
+
 ### Cheshire East
 GET `/api/council/cheshire_east?uprn=XXXXXXX`
 
 ### Stockport
 GET `/api/council/stockport?uprn=XXXXXXX`
+
+### East Cambridgeshire
+GET `/api/council/east_cambridgeshire?uprn=XXXXXXX`
+
+
 
 ## Contribution
 - Create a file under `src/helpers` for your chosen council to perform the page parsing logic
