@@ -14,14 +14,13 @@ export default async function (req, res) {
 
     if (!req.query.uprn) return res.send(422);
 
-    var data = qs.stringify({
+    const data = qs.stringify({
       Postcode: "-",
       SelectedUprn: "24011054",
       PreviousPostcode: "-",
       PreviousHouse: "",
     });
 
-    // This works in Postman... Can't figure out why it thinks there's no form data here
     const response = await axios({
       method: "POST",
       url: "https://forms.n-somerset.gov.uk/Waste/CollectionSchedule",
@@ -31,7 +30,20 @@ export default async function (req, res) {
       data: data,
     });
 
-    const $ = cheerio.load(response.data);
+    const cookies = response.headers["set-cookie"];
+    const aspCookie = cookies[0].split(";");
+
+    const config = {
+      method: "GET",
+      url: "https://forms.n-somerset.gov.uk/Waste/CollectionSchedule/ViewSchedule",
+      headers: {
+        Cookie: aspCookie[0],
+      },
+    };
+    const pageResponse = await axios(config);
+    console.log(config);
+
+    const $ = cheerio.load(pageResponse.data);
 
     console.log($("body").html());
 
