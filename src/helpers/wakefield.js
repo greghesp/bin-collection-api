@@ -2,6 +2,7 @@ import * as cheerio from "cheerio";
 import puppeteer from "puppeteer";
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
+import getBrowserInstance from "../utils/getBrowserInstance";
 dayjs.extend(customParseFormat);
 
 export default async function (req, res) {
@@ -12,7 +13,7 @@ export default async function (req, res) {
 
     if (!req.query.uprn) return res.send(422);
 
-    const browser = await puppeteer.launch();
+    const browser = await getBrowserInstance();
     const page = await browser.newPage();
     await page.goto(
       `https://www.wakefield.gov.uk/site/Where-I-Live-Results?uprn=${req.query.uprn}`,
