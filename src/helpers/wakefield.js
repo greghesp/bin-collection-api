@@ -76,6 +76,7 @@ export default async function (req, res) {
 
     return res.send(items);
   } catch (e) {
+    console.log(e);
     return res.status(e.response.status).send({
       errors: [
         {
