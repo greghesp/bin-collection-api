@@ -4,13 +4,12 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p $PORT",
     "lint": "next lint"
   },
   "dependencies": {
     "axios": "^0.24.0",
     "cheerio": "^1.0.0-rc.10",
-    "chrome-aws-lambda": "^10.1.0",
     "dayjs": "^1.10.7",
     "next": "12.0.7",
     "prettier": "^2.5.1",
@@ -22,5 +21,6 @@
   "devDependencies": {
     "eslint": "8.5.0",
     "eslint-config-next": "12.0.7"
-  }
+  },
+  "cacheDirectories": [".next/cache"]
 }

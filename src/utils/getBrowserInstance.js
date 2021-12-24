@@ -1,5 +1,3 @@
-import chromium from "chrome-aws-lambda";
-
 export default async function () {
   const executablePath = await chromium.executablePath;
 
@@ -7,13 +5,9 @@ export default async function () {
     // running locally
     const puppeteer = require("puppeteer");
     return puppeteer.launch({
-      args: chromium.args,
       headless: true,
-      defaultViewport: {
-        width: 1280,
-        height: 720,
-      },
-      ignoreHTTPSErrors: true,
+      defaultViewport: null,
+      args: ["--incognito", "--no-sandbox", "--single-process", "--no-zygote"],
     });
   }
 

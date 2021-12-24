@@ -1,5 +1,4 @@
 import * as cheerio from "cheerio";
-import puppeteer from "puppeteer";
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 import getBrowserInstance from "../utils/getBrowserInstance";
