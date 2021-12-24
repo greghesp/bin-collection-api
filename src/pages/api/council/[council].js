@@ -3,6 +3,7 @@ import {
   Stockport,
   EastCambridgeshire,
   NorthSomerset,
+  Wakefield,
 } from "../../../helpers";
 
 export default async function handler(req, res) {
@@ -17,6 +18,8 @@ export default async function handler(req, res) {
       return await EastCambridgeshire(req, res);
     case "north_somerset":
       return await NorthSomerset(req, res);
+    case "wakefield":
+      return await Wakefield(req, res);
     default:
       res.send(200);
   }
