@@ -1,0 +1,39 @@
+{
+  "functions": {
+    "predeploy": [
+      "npm --prefix \"$RESOURCE_DIR\" run lint"
+    ],
+    "source": "functions"
+  },
+  "hosting": {
+    "public": "public",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "/",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/api/uk/cheshire-east", "function": "cheshireEast"
+      },
+      {
+        "source": "/api/uk/east-cambridgeshire", "function": "eastCambridgeshire"
+      },
+      {
+        "source": "/api/uk/stockport", "function": "stockport"
+      },
+      {
+        "source": "/api/uk/wakefield", "function": "wakefield"
+      }
+    ]
+  },
+  "emulators": {
+    "hosting": {
+      "port": 6001
+    }
+  }
+}
