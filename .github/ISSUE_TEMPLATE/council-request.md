@@ -1,7 +1,7 @@
 ---
 name: Council Request
 about: Request a new council API
-title: "[Council Request] "
+title: "[Council Request] Council Name, Country"
 labels: council request
 assignees: ''
 
