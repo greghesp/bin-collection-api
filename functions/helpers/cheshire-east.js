@@ -1,8 +1,8 @@
 const functions = require("firebase-functions");
 const axios = require("axios");
 const cheerio = require("cheerio");
-const dayjs = require("dayjs")
-const customParseFormat = require("dayjs/plugin/customParseFormat")
+const dayjs = require("dayjs");
+const customParseFormat = require("dayjs/plugin/customParseFormat");
 dayjs.extend(customParseFormat);
 
 exports.cheshireEast = functions.https.onRequest(async (req, res) => {
@@ -27,8 +27,6 @@ exports.cheshireEast = functions.https.onRequest(async (req, res) => {
         .find("label")
         .toArray()
         .map((item, index) => {
-        console.log($(item).text())
-
           switch (index) {
             case 0:
               bin.collectionDay = $(item).text();
@@ -58,5 +56,3 @@ exports.cheshireEast = functions.https.onRequest(async (req, res) => {
     });
   }
 });
-
-

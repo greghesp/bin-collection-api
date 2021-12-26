@@ -6,6 +6,7 @@ const qs = require("qs");
 const customParseFormat = require("dayjs/plugin/customParseFormat");
 const fs = require("fs");
 const path = require("path");
+const { fullDayName } = require("../utils/fullDayName");
 dayjs.extend(customParseFormat);
 
 exports.wiltshire = functions.https.onRequest(async (req, res) => {
@@ -36,44 +37,26 @@ exports.wiltshire = functions.https.onRequest(async (req, res) => {
     //   }
     // );
 
-    $(
-      `div[class*="collection-calendar-content"] > div[class*="cal-cell-active"]`
-    ).each((index, element) => {
+    $(`div[class*="collection-calendar-content"]`).each((index, element) => {
       $(element)
-        .find(`div[class*="cal-inner"]`)
+        .find(`div[class*="cal-cell-active"] > div > div[class*="cal-inner"]`)
         .toArray()
         .map((item, index) => {
-          console.log(index, $(item).html());
+          const bin = {};
+          const date = $(item)
+            .find(`span[class*="day-no"]`)
+            .attr("data-cal-date");
+          const day = $(item).find(`span[class*="day-name"]`).text();
+          const binType = $(item)
+            .find(`div[class*="rc-event-container"] > span`)
+            .text();
+
+          bin.collectionDay = fullDayName(day);
+          bin.collectionDate = dayjs(date);
+          bin.binType = binType;
+          items.bins.push(bin);
         });
     });
-
-    // $(
-    //   "div.inner-results-contains-table > div > table > tbody > tr.data-row > td.visible-cell"
-    // ).each((index, element) => {
-    //   const bin = {};
-    //
-    //   $(element)
-    //     .find("label")
-    //     .toArray()
-    //     .map((item, index) => {
-    //     console.log($(item).text())
-    //
-    //       switch (index) {
-    //         case 0:
-    //           bin.collectionDay = $(item).text();
-    //           break;
-    //         case 1:
-    //           bin.collectionDate = dayjs($(item).text(), "DD/MM/YYYY");
-    //           break;
-    //         case 2:
-    //           bin.binType = $(item).text();
-    //           break;
-    //         default:
-    //           return;
-    //       }
-    //     });
-    //   items.bins.push(bin);
-    // });
 
     return res.send(items);
   } catch (e) {

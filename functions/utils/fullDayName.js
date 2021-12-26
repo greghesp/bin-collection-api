@@ -1,22 +1,23 @@
-exports.fullDayName = function(shortenedName) {
-  switch (shortenedName) {
-    case "Mon":
+exports.fullDayName = function (shortenedName) {
+  const lowerCase = shortenedName.toLowerCase();
+  switch (lowerCase) {
+    case "mon":
       return "Monday";
-    case "Tue":
-    case "Tues":
+    case "tue":
+    case "tues":
       return "Tuesday";
-    case "Wed":
-    case "Weds":
+    case "wed":
+    case "weds":
       return "Wednesday";
-    case "Thu":
-    case "Thur":
-    case "Thurs":
+    case "thu":
+    case "thur":
+    case "thurs":
       return "Thursday";
-    case "Fri":
+    case "fri":
       return "Friday";
-    case "Sat":
+    case "sat":
       return "Saturday";
-    case "Sun":
+    case "sun":
       return "Sunday";
     default:
       return "Unknown";

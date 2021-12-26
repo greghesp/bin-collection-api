@@ -20,6 +20,11 @@ __Uses scraping technology therefore response may take longer than expected__
 
 GET `https://bin-collection-api.web.app/api/uk/wakefield?uprn=XXXXXXX`
 
+### Wiltshire
+
+GET `https://bin-collection-api.web.app/api/uk/wiltshire?uprn=XXXXXXX&postcode=XXXXXX`
+
+
 # Contribution
 
 ## Getting Started
