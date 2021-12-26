@@ -21,4 +21,4 @@ exports.fullDayName = function(shortenedName) {
     default:
       return "Unknown";
   }
-}
+};
