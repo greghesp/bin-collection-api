@@ -5,7 +5,10 @@ const puppeteer = require("puppeteer");
 const customParseFormat = require("dayjs/plugin/customParseFormat");
 dayjs.extend(customParseFormat);
 
-exports.wakefield = functions.https.onRequest(async (req, res) => {
+exports.wakefield = functions.runWith({
+  memory: '2GB',
+  timeoutSeconds: '60'
+}).https.onRequest(async (req, res) => {
   try {
     let items = {
       bins: [],
