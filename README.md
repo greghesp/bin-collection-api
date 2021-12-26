@@ -1,5 +1,3 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
 ## Getting Started
 
 First, run the development server:
@@ -18,17 +16,17 @@ For most requests, use your UPRN which can be found here: https://uprn.uk/
 
 
 ### Cheshire East
-GET `https://bin-collection-api.vercel.app/api/council/cheshire_east?uprn=XXXXXXX`
+GET `https://bin-collection-api.web.app/api/council/cheshire_east?uprn=XXXXXXX`
 
 ### Stockport
-GET `https://bin-collection-api.vercel.app/api/council/stockport?uprn=XXXXXXX`
+GET `https://bin-collection-api.web.app/api/council/stockport?uprn=XXXXXXX`
 
 ### East Cambridgeshire
-GET `https://bin-collection-api.vercel.app/api/council/east_cambridgeshire?uprn=XXXXXXX`
+GET `https://bin-collection-api.web.app/api/council/east_cambridgeshire?uprn=XXXXXXX`
 
 
 
 ## Contribution
-- Create a file under `src/helpers` for your chosen council to perform the page parsing logic
-- Add the parse to the imports under `src/helpers/index.js` and export it
-- Import the helper to `src/pages/api/council/[council].js` and add logic to the switch statement
+- Create a file under `/functions/helpers` for your chosen council to perform the page parsing logic
+- Add the parser to the exports under `/functions/index.js`
+- Add the API route rewrite to the `firebase.json` file, under the hosting.rewrites array
