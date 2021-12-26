@@ -16,7 +16,7 @@
       {"source": "/api/uk/wakefield", "function": "wakefield"},
       {"source": "/api/uk/cheshire-east", "function": "cheshireEast"},
       {"source": "/api/uk/east-cambridgeshire", "function": "eastCambridgeshire"},
-      {"source": "/api/uk/stockport", "function": "stockport"},
+      {"source": "/api/uk/stockport", "function": "stockport"}
     ]
   },
   "emulators": {
