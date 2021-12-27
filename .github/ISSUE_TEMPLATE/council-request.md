@@ -1,11 +1,14 @@
 ---
 name: Council Request
 about: Request a new council API
-title: "[Council Request] Council Name, Country"
+title: ''
 labels: council request
 assignees: ''
 
 ---
+
+**Complete the title in the following format**
+[Council Request] Council Name, Country
 
 **Please provide the council and country you wish to request**
 North Somerset, UK
